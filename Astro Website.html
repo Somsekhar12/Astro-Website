@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroGuide | Astrology Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 420px;
+      margin: 40px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    input {
+      background: #fff;
+      color: #000;
+    }
+    button {
+      background: gold;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ffdf00;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #ffd700;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔮 AstroGuide</h1>
+    <p>Discover your zodiac sign instantly</p>
+  </header>
+
+  <div class="card">
+    <h2>Birth Date</h2>
+    <input type="date" id="dob" />
+    <button onclick="calculateZodiac()">Reveal My Zodiac</button>
+    <div id="result"></div>
+  </div>
+
+  <footer>
+    © 2026 AstroGuide • Built Live in ChatGPT
+  </footer>
+
+  <script>
+    function calculateZodiac() {
+      const dob = document.getElementById('dob').value;
+      if (!dob) {
+        document.getElementById('result').innerText = 'Please select your date of birth';
+        return;
+      }
+
+      const date = new Date(dob);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      let zodiac = '';
+
+      if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = 'Capricorn';
+      else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = 'Aquarius';
+      else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) zodiac = 'Pisces';
+      else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = 'Aries';
+      else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = 'Taurus';
+      else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = 'Gemini';
+      else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = 'Cancer';
+      else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = 'Leo';
+      else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = 'Virgo';
+      else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = 'Libra';
+      else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = 'Scorpio';
+      else zodiac = 'Sagittarius';
+
+      document.getElementById('result').innerText = `Your Zodiac Sign is ${zodiac}`;
+    }
+  </script>
+
+</body>
+</html>
